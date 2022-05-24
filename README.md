@@ -1,3 +1,3 @@
 # caesar-decryption
-Ceasar decryptor with single key. \n
+Ceasar decryptor with single key.\
 Had to do this cus of school.
