@@ -1,13 +1,13 @@
 from random import randint
 
-def decrypt(enc:str, key:list):
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
+def decrypt(enc:str, key:list):
     keyloc = 0
     dec = ""
 
     for char in enc: 
-        charindex = alphabet.index(char)
+        charindex = alphabet.index(char) # Position im alphabet des Zeichen
 
         print(f"[Debug] {char} ({charindex} - {key[keyloc]}) -> ", end = "")
 
@@ -27,8 +27,6 @@ def encrypt(dec:str, keylength = None, key = True):
     if keylength == None:
         keylength = len(dec)
 
-    alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
     keyloc = 0
     enc = ""
 
@@ -43,7 +41,6 @@ def encrypt(dec:str, keylength = None, key = True):
         encchar = alphabet[charindex + key[keyloc]]
         print(encchar)
 
-
         enc += encchar
 
         keyloc += 1
@@ -53,6 +50,7 @@ def encrypt(dec:str, keylength = None, key = True):
     
     return key, enc
 
-xkey, xenc = encrypt("hello")
-print(xkey, xenc)
-print(decrypt(xenc, xkey))
+decrypted_text             = "hello"
+decryptkey, encrypted_text = encrypt("hello")
+decrypted_text             = decrypt(encrypted_text, decryptkey)
+print(decrypted_text)
